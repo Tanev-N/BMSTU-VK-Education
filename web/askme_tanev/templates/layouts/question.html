@@ -1,0 +1,29 @@
+{% load static %}
+
+<div class="card mb-3" style="max-width: 540px;">
+    <div class="row g-0">
+        <div class="col-md-4">
+            <img src="{% static 'img/avatar.png' %}" class="img-fluid rounded-start" alt="...">
+            <div class="input-group flex-nowrap m-3 w-50">
+                <input type="number" value="0" class="form-control"/>
+            </div>
+        </div>
+        <div class="col-md-8 d-flex justify-content-between align-items-center">
+            <div class="card-body">
+                <a href="/question/{{ question.id }}"><h5 class="card-title">{{ question.title }}</h5></a>
+                <p class="card-text">{{ question.text }}</p>
+                <div class="row">
+                    <div class="col-4"><a href="{% url "question" question.id %}">answers(...)</a></div>
+                    <div class="col-8">
+                        <span>Tags</span>
+
+                        <a href="{% url "tag" %}">tag1</a>
+                        <a href="{% url "tag" %}">tag2</a>
+                        <a href="{% url "tag" %}">tag3</a>
+                        <a href="{% url "tag" %}">tag4</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

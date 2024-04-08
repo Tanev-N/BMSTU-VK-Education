@@ -1,0 +1,60 @@
+{% extends 'layouts/base.html' %}
+{% load static %}
+
+{% block content %}
+    <div class="col-9">
+        <div class="d-flex gap-3 text-center align-items-center mt-3">
+            <h1>Settings: Dr. Pepper</h1>
+        </div>
+        <form class="m-5">
+            <div class="row mb-3">
+                <label for="inputLogin3" class="col-sm-2 col-form-label">Login</label>
+                <div class="col-sm-10">
+                    <input type="text" class="form-control" id="inputLogin3" value="Dr. Pepper" >
+                </div>
+            </div>
+            <div class="row mb-3">
+                <label for="inputEmail3" class="col-sm-2 col-form-label">Email</label>
+                <div class="col-sm-10">
+                    <input type="email" class="form-control" id="inputEmail3" value="Dr.Pepper@mail.ru">
+                </div>
+            </div>
+            <div class="row mb-3">
+                <label for="inputNickname3" class="col-sm-2 col-form-label">Nickname</label>
+                <div class="col-sm-10">
+                    <input type="text" class="form-control" id="inputNickname3" value="dr-pepper">
+
+                </div>
+            </div>
+            <div class="row mb-3">
+                <label for="inputNickname3" class="col-sm-2 col-form-label">Upload avatar</label>
+                <div class="col-sm-10">
+                    <img class="picture border border-dark" alt="avatar" style="min-height: 70px; max-height: 120px; min-width: 70px; max-width: 120px">
+                    <input class="form-control mt-3" type="file" id="file" value="Change Image">
+                    <button type="submit" class="btn btn-primary mt-3" style=" background-color: grey">Save</button>
+                </div>
+            </div>
+
+        </form>
+    </div>
+    <script>
+        const picture = document.querySelector(".picture");
+        const inputFile = document.querySelector("#file");
+
+        inputFile.addEventListener("change", ({target: t}) => {
+            const [file] = t.files;
+
+            if (!file) return;
+
+            if (!file.size) return;
+
+            const reader = new FileReader();
+
+            reader.onload = () => {
+                picture.src = reader.result;
+            };
+
+            reader.readAsDataURL(file);
+        });
+    </script>
+{% endblock %}
