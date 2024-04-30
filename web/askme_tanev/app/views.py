@@ -3,7 +3,6 @@ from django.shortcuts import render
 
 # Create your views here.
 
-REGISTRATION_FLAG = True
 
 
 QUESTIONS = [
@@ -27,14 +26,13 @@ ANSWERS = [
 
 
 def index(request):
-
     page_num = request.GET.get('page', 1)
     paginator = Paginator(QUESTIONS, 5)
     page_obj = paginator.page(page_num)
     return render(request, 'index.html', {"questions": page_obj, "best_users": BEST_USERS})
 
-def hot(request):
 
+def hot(request):
     questions = QUESTIONS[:]
     questions.reverse()
     page_num = request.GET.get('page', 1)
@@ -42,29 +40,34 @@ def hot(request):
     page_obj = paginator.page(page_num)
     return render(request, 'hot.html', {"questions": page_obj, "best_users": BEST_USERS})
 
-def question(request, question_id):
 
-    item = QUESTIONS[question_id]
-    return  render(request, "question_details.html", {"question": item, "best_users": BEST_USERS, "answers": ANSWERS})
+def question(request, question_id):
+    question = QUESTIONS[question_id]
+    ans = ANSWERS[:]
+    page_num = request.GET.get('page', 1)
+    paginator = Paginator(ans, 2)
+    page_obj = paginator.page(page_num)
+    return render(request, "question_details.html",
+                  {"question": question, "best_users": BEST_USERS, "answers": page_obj})
+
 
 def ask(request):
-
     return render(request, "ask.html", {"best_users": BEST_USERS})
 
-def settings(request):
 
+def settings(request):
     return render(request, "settings.html", {"best_users": BEST_USERS})
 
-def signup(request):
 
+def signup(request):
     return render(request, "signup.html", {"best_users": BEST_USERS})
 
-def login(request):
 
+def login(request):
     return render(request, "login.html", {"best_users": BEST_USERS})
 
-def tag(request):
 
+def tag(request):
     page_num = request.GET.get('page', 1)
     paginator = Paginator(QUESTIONS, 5)
     page_obj = paginator.page(page_num)

@@ -6,14 +6,14 @@
     <div class="col-9">
         <div class="d-flex gap-3 text-center align-items-center mt-3">
             <h1>New Questions</h1>
-            <a href="/hot">Hot Questions</a>
+            <a href="{% url "hot" %}">Hot Questions</a>
         </div>
         {% for question in questions %}
 
-            {% include "layouts/question.html" %}
+            {% include "component/question.html" with item=question %}
 
         {% endfor %}
-        {% include "layouts/paginator.html" %}
+        {% include "component/paginator.html" with item=questions %}
     </div>
 {% endblock %}
 

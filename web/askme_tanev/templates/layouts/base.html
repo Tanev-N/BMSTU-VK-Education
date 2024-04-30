@@ -12,10 +12,12 @@
 <body class="d-flex flex-column h-100 position-relative">
 <nav class="navbar bg-body-tertiary">
     <div class="container-sm-fluid container-lg ">
-        <a class="navbar-brand">AskTanev</a>
+        <a href="{% url "index" %}" class="navbar-brand">AskTanev</a>
+        <a href="{% url "ask" %}" class="btn btn-outline-success" type="submit">Ask!</a>
         <form class="d-flex" role="search">
-            <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
-            <button class="btn btn-outline-success" type="submit">Ask!</button>
+            <input class="form-control me-2" type="search" placeholder="Search"
+                   aria-label="Search">
+            <a class="btn btn-outline-success" type="submit">Search!</a>
         </form>
 
         <div class="d-flex justify-content-between gap-1">

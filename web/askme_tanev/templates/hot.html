@@ -8,11 +8,11 @@
             <h1>Hot Questions</h1>
         </div>
         {% for question in questions %}
-            {% include "layouts/question.html" %}
+            {% include "component/question.html" with item=question %}
 
 
         {% endfor %}
-        {% include "layouts/paginator.html" %}
+        {% include "component/paginator.html" with item=question %}
     </div>
 {% endblock %}
 
