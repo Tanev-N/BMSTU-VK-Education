@@ -29,8 +29,8 @@
                     Dr.Pepper
                 </div>
                 <div>
-                    <a href="{% url "settings" %}"> Settings </a>
-                    <a href="?auth=0">Log out</a>
+                    <a class="btn btn-outline-secondary btn-sm" href="{% url "settings" %}"> Settings </a>
+                    <a class="btn btn-outline-secondary btn-sm" href="?auth=0">Log out</a>
                 </div>
             </div>
         </div>
@@ -40,28 +40,24 @@
 <main class="container-sm-fluid container-lg">
 
 
-    <div class="row mt-2">
+    <div class="row mt-2 ">
         {% block content %}
         {% endblock %}
-        <div class="col-3">
+        <div class="col-3 mt-3">
 
             <h2 class="mb-3">Popular Tags</h2>
 
-            <button type="button" class="btn btn-primary">Python</button>
-            <button type="button" class="btn btn-secondary">C</button>
-            <button type="button" class="btn btn-success">C++</button>
-            <button type="button" class="btn btn-danger">Rust</button>
-            <button type="button" class="btn btn-warning">Dart</button>
-            <button type="button" class="btn btn-info">C#</button>
-            <button type="button" class="btn btn-light">Pascal</button>
-            <button type="button" class="btn btn-dark">Basic</button>
+            {% for tag in tags %}
+                <a class="d-block w-50 btn btn-sm btn-outline-primary mb-2"
+                   href="{% url "tag" tag.id %}">{{ tag.name }}</a>
+            {% endfor %}
 
             <h2 class="mt-5">Best Members</h2>
-            <div>
-                {% for best_user in best_users %}
-                    <a href="" class="d-block">{{ best_user.username }}</a>
-                {% endfor %}
-            </div>
+
+            {% for best_user in best_users %}
+                {% include "component/user_card.html" with item=best_user.user %}
+            {% endfor %}
+
 
         </div>
 

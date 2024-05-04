@@ -7,9 +7,11 @@
             <li class="page-item"><a class="page-link" href="?page={{ item.previous_page_number }}">previous</a>
             </li>
         {% endif %}
-        <li class="page-item"><div class="page-link">
-            Page {{ item.number }} of {{ item.paginator.num_pages }}
-        </div></li>
+        <li class="page-item">
+            <div class="page-link">
+                Page {{ item.number }} of {{ item.paginator.num_pages }}
+            </div>
+        </li>
         {% if item.has_next %}
             <li class="page-item"><a class="page-link" href="?page={{ item.next_page_number }}">next</a></li>
             <li class="page-item"><a class="page-link" href="?page={{ item.paginator.num_pages }}">last &raquo;</a>

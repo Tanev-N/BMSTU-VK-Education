@@ -10,5 +10,5 @@ urlpatterns = [
     path('settings/', views.settings, name='settings'),
     path('login/', views.login, name='login'),
     path('singup/', views.signup, name='signup'),
-    path('tag/blablabla', views.tag, name='tag'),
+    path('tag/<int:tag_id>', views.tag, name='tag'),
 ]

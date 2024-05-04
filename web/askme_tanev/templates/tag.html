@@ -1,4 +1,3 @@
-
 {% extends 'layouts/base.html' %}
 
 {% load static %}
@@ -6,14 +5,14 @@
 {% block content %}
     <div class="col-9">
         <div class="d-flex gap-3 text-center align-items-center mt-3">
-            <h1>Tag: tags</h1>
+            <h1>Tag: {{ curr_tag }}</h1>
         </div>
         {% for question in questions %}
 
-            {% include "component/question.html" %}
+            {% include "component/question.html" with item=question %}
 
         {% endfor %}
-        {% include "component/paginator.html" %}
+        {% include "component/paginator.html" with item=questions %}
     </div>
 {% endblock %}
 

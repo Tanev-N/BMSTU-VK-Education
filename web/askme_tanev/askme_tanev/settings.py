@@ -74,16 +74,6 @@ WSGI_APPLICATION = 'askme_tanev.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/5.0/ref/settings/#databases
 
-DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.postgresql',  # Используется PostgreSQL
-        'NAME': 'App',  # Имя базы данных
-        'USER': 'postgres',  # Имя пользователя
-        'PASSWORD': 'admin',  # Пароль пользователя
-        'HOST': '192.168.3.1',
-        'PORT': 5432,  # Порт базы данных
-    }
-}
 
 # Password validation
 # https://docs.djangoproject.com/en/5.0/ref/settings/#auth-password-validators
@@ -127,3 +117,19 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 STATICFILES_DIRS = [
     BASE_DIR / 'static',
 ]
+DATABASES = {
+    'default': {
+        'ENGINE': 'django.db.backends.postgresql',  # Используется PostgreSQL
+        'NAME': 'django_db',  # Имя базы данных
+        'USER': 'postgres',  # Имя пользователя
+        'PASSWORD': 'admin',  # Пароль пользователя
+        'HOST': 'localhost',
+        'PORT': 5432,  # Порт базы данных
+    }
+}
+
+# try:
+#     from local_setting import *
+# except ImportError:
+#     pass
+
