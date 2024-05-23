@@ -1,12 +1,10 @@
 #include <iostream>
 
-
-
 int main()
 {
     unsigned long long number;
 
-    std::cin >> number; 
+    std::cin >> number;
 
     int k; // bit's order number
 
@@ -16,7 +14,5 @@ int main()
 
     std::cout << number << std::endl;
 
-
     return 0;
-
 }

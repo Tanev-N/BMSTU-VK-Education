@@ -8,27 +8,12 @@
             <h1>New question</h1>
         </div>
 
-        <div class="form-floating">
-            <div class="row">
-                <h5 class="col-2  mt-5">Title</h5>
-                <textarea class="col-10 form-control mt-5 w-75 border border-dark" placeholder=""
-                          id="floatingTextarea2"
-                ></textarea>
-
-                <h5 class="col-2  mt-5">Text</h5>
-                <textarea class="col-10 form-control mt-5 w-75 border border-dark" style="height: 10rem" placeholder=""
-                          id="floatingTextarea2"
-                ></textarea>
-                <h5 class="col-2  mt-5">Tags</h5>
-                <textarea class="col-10 form-control mt-5 w-75 border border-dark" placeholder=""
-                          id="floatingTextarea2"
-                ></textarea>
-
-            </div>
+        <form class="form-floating" method="post">
+            {% include "component/form.html" %}
             <div class="d-flex justify-content-center mt-5 mb-5">
                 <button type="submit" class="btn btn-primary  " style="background-color: grey">Ask</button>
             </div>
-        </div>
+        </form>
 
     </div>
 {% endblock %}

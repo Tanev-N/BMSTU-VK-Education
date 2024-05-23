@@ -14,5 +14,6 @@
         {% endfor %}
         {% include "component/paginator.html" with item=questions %}
     </div>
+    <script src="{% static "js/like_ajax.js" %}">init("Question")</script>
 {% endblock %}
 

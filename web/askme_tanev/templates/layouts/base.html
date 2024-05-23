@@ -21,19 +21,25 @@
         </form>
 
         <div class="d-flex justify-content-between gap-1">
-            <div class="border">
-                <img src="{% static 'img/avatar.png' %}" width="50" height="50">
-            </div>
-            <div class="flex-column">
-                <div>
-                    Dr.Pepper
+            {% if user.is_authenticated %}
+                <div class="border">
+                    <img src="{{ request.user.get_image_url }}" width="50" height="50">
                 </div>
-                <div>
-                    <a class="btn btn-outline-secondary btn-sm" href="{% url "settings" %}"> Settings </a>
-                    <a class="btn btn-outline-secondary btn-sm" href="?auth=0">Log out</a>
+                <div class="flex-column">
+                    <div>
+                        {{ user.username }}
+                    </div>
+                    <div>
+                        <a class="btn btn-outline-secondary btn-sm" href="{% url "settings" %}"> Settings </a>
+                        <a class="btn btn-outline-secondary btn-sm" href={% url "logout" %}>Log out</a>
+                    </div>
                 </div>
-            </div>
+            {% else %}
+                    <a class="btn btn-outline-primary btn-sm" href="{% url "login" %}">Login</a>
+                    <a class="btn btn-outline-primary btn-sm" href={% url "signup" %}>Signup</a>
+            {% endif %}
         </div>
+
     </div>
 </nav>
 

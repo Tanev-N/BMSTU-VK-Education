@@ -117,6 +117,7 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 STATICFILES_DIRS = [
     BASE_DIR / 'static',
 ]
+
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',  # Используется PostgreSQL
@@ -127,6 +128,10 @@ DATABASES = {
         'PORT': 5432,  # Порт базы данных
     }
 }
+
+
+MEDIA_ROOT = BASE_DIR / 'media'
+MEDIA_URL = '/media/'
 
 # try:
 #     from local_setting import *

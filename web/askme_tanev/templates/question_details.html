@@ -6,10 +6,10 @@
 
     <div class="col-9">
         <hr class="border border-primary border-3 opacity-75">
-        <div class="card mb-3 p-3">
+        <div class="card mb-3 p-3 question" data-QuestionId="{{ question.id }}">
             <div class="row">
                 <div class="col-md-4">
-                    <div class="d-flex justify-content-center"><img src="{% static 'img/avatar.png' %}"
+                    <div class="d-flex justify-content-center"><img src="{{ question.profile.avatar.url }}"
                                                                     class="img-fluid " alt="..."
                                                                     style="max-width: 200px"></div>
                     <div class="ms-2 mt-3">{% include "component/rating_bar.html" with item=question %}</div>
@@ -19,8 +19,7 @@
                         <h5 class="card-title">{{ question.title }}</h5>
                         <p class="card-text">{{ question.text }}</p>
                         <div class="row">
-                            <div class="col"><a class="btn btn-outline-dark"
-                                                href="{% url "question" question.id %}">answers(...)</a>
+                            <div class="col">
                                 <p class="mt-1 fw-bold">Tags</p>
                                 {% for tag in question.tags.all %}
                                     <a class="btn btn-sm btn-outline-info m-1"
@@ -41,15 +40,22 @@
         {% include 'component/paginator.html' with item=answers %}
 
         <hr class="border border-primary border-3 opacity-75">
+        {% if request.user.is_authenticated %}
+        <form method="post">
 
-        <form>
-            <div class="mb-3">
-                <label for="exampleInputEmail1" class="form-label">Write answer</label>
-                <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
-            </div>
-            <button type="submit" class="btn btn-primary mb-5" style="background-color: #006b1b">Aswer</button>
+            {% include "component/form.html" %}
+            <div class="d-flex justify-content-center"> <button type="submit" class="btn btn-primary mb-5 align-self-center" style="background-color: #006b1b">Aswer</button></div>
         </form>
+        {% else %}
+            {% csrf_token %}
+            <div class="alert alert-danger md-2">You don't auth, please log in to write answer</div>
+        {% endif %}
     </div>
+    <script src="{% static "js/like_ajax.js" %}"></script>
+    <script >
+        init("Answer");
+        init("Question");
+    </script>
 {% endblock %}
 
 

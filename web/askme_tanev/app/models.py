@@ -72,7 +72,7 @@ class Question(models.Model):
 
 class Answer(models.Model):
     text = models.TextField()
-    correct = models.BooleanField()
+    correct = models.BooleanField(default=False)
     created_at = models.DateTimeField(auto_now_add=True)
     rating = models.IntegerField(default=0)
     profile = models.ForeignKey(Profile, on_delete=models.CASCADE)

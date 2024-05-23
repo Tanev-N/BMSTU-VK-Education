@@ -115,6 +115,7 @@ media/
 *.db
 *.pid
 
+local_setting.py
 # Ignore Django Migrations in Development if you are working on team
 
 # Only for Development only

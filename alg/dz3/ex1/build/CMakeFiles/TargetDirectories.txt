@@ -1,3 +1,0 @@
-/mnt/c/Users/Николай/OneDrive/Рабочий стол/vk/BMSTU-VK-Education/alg/dz3/ex1/build/CMakeFiles/1ex.dir
-/mnt/c/Users/Николай/OneDrive/Рабочий стол/vk/BMSTU-VK-Education/alg/dz3/ex1/build/CMakeFiles/edit_cache.dir
-/mnt/c/Users/Николай/OneDrive/Рабочий стол/vk/BMSTU-VK-Education/alg/dz3/ex1/build/CMakeFiles/rebuild_cache.dir

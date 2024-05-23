@@ -1,15 +1,15 @@
 {% load static %}
 
-<div class="card mb-3 p-3">
+<div class="card mb-3 p-3 question" data-QuestionId="{{ item.id }}">
     <div class="row">
         <div class="col-md-4">
-            <div class="d-flex justify-content-center"><img src="{% static 'img/avatar.png' %}" class="img-fluid "
+            <div class="d-flex justify-content-center"><img src="{{ item.profile.avatar.url }}" class="img-fluid "
                                                             alt="..." style="max-width: 150px"></div>
             <div class="ms-2 mt-3">{% include "component/rating_bar.html" %}</div>
         </div>
         <div class="col-md-8 d-flex justify-content-between align-items-center">
             <div class="card-body">
-                <a href="/question/{{ item.id }}"><h5 class="btn btn-outline-dark btn-lg">{{ item.title }}</h5></a>
+                <a href="{% url "question" item.id %}"><h5 class="btn btn-outline-dark btn-lg">{{ item.title }}</h5></a>
                 <p class="card-text">{{ item.text }}</p>
                 <div class="row">
                     <div class="col"><a class="btn btn-outline-dark"
