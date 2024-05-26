@@ -52,10 +52,13 @@
         {% endif %}
     </div>
     <script src="{% static "js/like_ajax.js" %}"></script>
+    <script src="{% static "js/answer_correct_flag_ajax.js" %}"></script>
     <script >
         init("Answer");
         init("Question");
+        flag_ajax();
     </script>
+
 {% endblock %}
 
 

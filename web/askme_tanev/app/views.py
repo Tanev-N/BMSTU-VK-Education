@@ -231,3 +231,18 @@ def like_ajax(request, item_id):
         item_like.save()
     item.save()
     return JsonResponse({'likes_count': item.rating})
+
+
+@require_http_methods(["POST"])
+@login_required(redirect_field_name='next', login_url='login')
+@csrf_protect
+def answer_correct_flag_ajax(request, item_id):
+    answer = Answer.objects.filter(id=item_id).first()
+    if not answer:
+        return JsonResponse({'error': 'not found'}, status=404)
+    question_for_answer = answer.question
+    if request.user != question_for_answer.profile.user:
+        return JsonResponse({'error': 'Permission Denied'}, status=403)
+    answer.correct = not answer.correct
+    answer.save()
+    return JsonResponse({}, status=200)

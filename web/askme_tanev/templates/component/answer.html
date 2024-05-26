@@ -12,14 +12,14 @@
             <div class="card-body">
                 <h4 class="mb-2">{{ item.profile.user.username }}</h4>
                 <p class="card-text">{{ item.text }}</p>
-                <form method="post">
-                    <div class="form-check">
-                        <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault" {% if item.correct %} checked {% endif %}>
-                        <label class="form-check-label" for="flexCheckDefault">
-                            Correct
-                        </label>
-                    </div>
-                </form>
+                <div class="form-check">
+                    <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault"
+                            {% if item.correct %} checked {% endif %} {% if question.profile.user != request.user %}
+                           disabled {% endif %}>
+                    <label class="form-check-label" for="flexCheckDefault">
+                        Correct
+                    </label>
+                </div>
             </div>
 
         </div>

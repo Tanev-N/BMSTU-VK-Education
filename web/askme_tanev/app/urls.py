@@ -13,4 +13,5 @@ urlpatterns = [
     path('tag/<int:tag_id>', views.tag, name='tag'),
     path('logout/', views.logout, name='logout'),
     path('like_ajax/<int:item_id>', views.like_ajax, name='like_ajax'),
+    path('answer_correct_flag_ajax/<int:item_id>', views.answer_correct_flag_ajax, name='answer_correct_flag_ajax'),
 ]
