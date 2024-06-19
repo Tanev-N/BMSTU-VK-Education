@@ -141,7 +141,8 @@ class SettingsForm(forms.Form):
         user.first_name = self.cleaned_data['nickname']
         user.save()
         profile = Profile.objects.filter(user=user).first()
-        profile.avatar = self.cleaned_data['avatar']
+        if self.cleaned_data.get('avatar'):
+            profile.avatar = self.cleaned_data['avatar']
         profile.save()
 
         return user

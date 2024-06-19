@@ -28,7 +28,7 @@ class Command(BaseCommand):
             user_list = [User(username=fake.unique.name(), email=fake.unique.email(), password=fake.unique.text()[:10])
                          for i in range(num_users)]
             User.objects.bulk_create(user_list)
-            avatars_path = MEDIA_ROOT / 'profile_pics/avatars_for_generating'
+            avatars_path = MEDIA_ROOT / 'avatars_for_generating'
             image_files = [os.path.join(avatars_path, f) for f in os.listdir(avatars_path) if os.path.isfile(os.path.join(avatars_path, f))]
             profile_list = []
             files_to_close = []

@@ -8,29 +8,9 @@
         </div>
         <form class="m-5" method="post" enctype="multipart/form-data">
             {% include "component/form.html" %}
-            <img class="picture border border-dark" alt="avatar"
-                 style="min-height: 70px; max-height: 120px; min-width: 70px; max-width: 120px">
+{#            <img class="picture border border-dark" alt="avatar"#}
+{#                 style="min-height: 70px; max-height: 120px; min-width: 70px; max-width: 120px">#}
             <button type="submit" class="btn btn-primary mt-3" style=" background-color: grey">Save</button>
         </form>
     </div>
-{#    <script>#}
-        {#const picture = document.querySelector(".picture");#}
-        {#const inputFile = document.querySelector("#file");#}
-        {##}
-        {#inputFile.addEventListener("change", ({target: t}) => {#}
-        {#    const [file] = t.files;#}
-        {##}
-        {#    if (!file) return;#}
-        {##}
-        {#    if (!file.size) return;#}
-        {##}
-        {#    const reader = new FileReader();#}
-        {##}
-        {#    reader.onload = () => {#}
-        {#        picture.src = reader.result;#}
-        {#    };#}
-        {##}
-        {#    reader.readAsDataURL(file);#}
-{#        });#}
-{#    </script>#}
 {% endblock %}

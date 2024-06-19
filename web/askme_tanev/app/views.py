@@ -230,7 +230,14 @@ def like_ajax(request, item_id):
     if operation == 'update':
         item_like.save()
     item.save()
-    return JsonResponse({'likes_count': item.rating})
+    if liked['like'] == 'True':
+        if operation == 'delete':
+            return JsonResponse({'liked': False, 'likes_count': item.rating})
+        return JsonResponse({'liked': item_like.status, 'likes_count': item.rating})
+    else:
+        if operation == 'delete':
+            return JsonResponse({'liked': False, 'likes_count': item.rating})
+        return JsonResponse({'liked': not item_like.status, 'likes_count': item.rating})
 
 
 @require_http_methods(["POST"])
@@ -246,3 +253,31 @@ def answer_correct_flag_ajax(request, item_id):
     answer.correct = not answer.correct
     answer.save()
     return JsonResponse({}, status=200)
+
+
+@require_http_methods(["POST"])
+@login_required
+@csrf_protect
+def check_like_ajax(request, item_id):
+    liked = json.loads(request.body)
+    profile = Profile.objects.filter(user=request.user).first()
+    if liked['item'] == 'Question':
+        item = Question.objects.filter(id=item_id).first()
+        if not item:
+            return JsonResponse({'error': 'not found'}, status=404)
+        item_like = QuestionLike.objects.filter(question=item, profile=profile).first()
+
+    if liked['item'] == 'Answer':
+        item = Answer.objects.filter(id=item_id).first()
+        if not item:
+            return JsonResponse({'error': 'not found'}, status=404)
+        item_like = AnswerLike.objects.filter(answer=item, profile=profile).first()
+
+    if not item_like:
+        return JsonResponse({'liked': False}, status=200)
+    else:
+        status = item_like.status
+        if liked['like'] == 'True':
+            return JsonResponse({'liked': status}, status=200)
+        else:
+            return JsonResponse({'liked': not status}, status=200)

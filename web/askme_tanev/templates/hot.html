@@ -3,6 +3,7 @@
 {% load static %}
 
 {% block content %}
+
     <div class="col-9">
         <div class="d-flex gap-3 text-center align-items-center mt-3">
             <h1>Hot Questions</h1>
@@ -14,7 +15,10 @@
         {% endfor %}
         {% include "component/paginator.html" with item=questions %}
     </div>
-    <script src="{% static "js/like_ajax.js" %}">init("Question")</script>
+    <script src="{% static "js/like_ajax.js" %}"></script>
+    <script>
+        init("Question")
+    </script>
 {% endblock %}
 
 
